@@ -1,5 +1,6 @@
 {
   "name": "minteractive-front",
+  "homepage": "http://minteractive.diagonal-software.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
