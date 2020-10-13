@@ -1,10 +1,14 @@
 import React from 'react';
 import './App.css';
 
+import MainAppBar from './components/AppBar';
+import ListProducts from './components/ListProducts';
+
 function App() {
   return (
     <div className="App">
-      <p>Hola</p>
+      <MainAppBar />
+      <ListProducts />
     </div>
   );
 }
