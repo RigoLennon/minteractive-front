@@ -1,32 +1,13 @@
 import React, { Component } from 'react';
 
-import { Card, CardActionArea, CardMedia, CardContent, Typography, CardActions, Button, makeStyles } from '@material-ui/core'
+import { Card, CardActionArea, CardMedia, CardContent, Typography, CardActions, Button } from '@material-ui/core'
 
+//import DetailProduct from './DetailProduct';
 
 export default class ListProducts extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            error: null,
-            products: []
-        };
-        this.getProd = this.getProd.bind(this);
-    }
-
-    componentDidMount() {
-        this.getProd()
-    }
-
-    getProd(){
-        fetch('http://mas.diagonal-software.com/api/products/')
-        .then(res => res.json())
-        .then((data) => {
-            this.setState({products:data});
-        });
-    }
 
     render() {
-        return this.state.products.map((product, id) => {
+        return this.props.dataProducts.map((product, id)=>{
             return (
                 <Card className="maxWidth: 345" key={id}>
                     <CardActionArea>
@@ -47,7 +28,7 @@ export default class ListProducts extends Component{
                         </CardContent>
                     </CardActionArea>
                     <CardActions>
-                        <Button variant="contained" color="primary" size="small">
+                        <Button variant="contained" color="primary" size="small" onClick={this.ShowProduct}>
                             Ver mas...
                         </Button>
                     </CardActions>

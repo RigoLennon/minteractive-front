@@ -1,14 +1,17 @@
 import React from 'react';
 import './App.css';
 
-import MainAppBar from './components/AppBar';
-import ListProducts from './components/ListProducts';
+//import ListProducts from './components/ListProducts';
+import DetailProduct from './components/DetailProduct';
+//import Parent from './components/testing/Parent'; //Testing
+import MainPage from './components/MainPage';
 
 function App() {
   return (
     <div className="App">
-      <MainAppBar />
-      <ListProducts />
+      <DetailProduct />
+      {/*<Parent />*/}
+      <MainPage />
     </div>
   );
 }
