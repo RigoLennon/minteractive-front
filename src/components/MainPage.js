@@ -10,7 +10,7 @@ export default class MainPage extends Component{
         this.state = {
             error: null,
             products: [],
-            restaurant: {},
+            restaurant: [],
         };
         this.getProd = this.getProd.bind(this);
         this.getRestau = this.getRestau.bind(this);
@@ -45,7 +45,7 @@ export default class MainPage extends Component{
         return(
             <div>
                 {/*<Child dataProducts = {this.state.products} />*/}
-                <mainAppBar dataRestau = {this.state.restaurant} />
+                <ElevateAppBar dataRestau = {this.state.restaurant} />
                 <ListProducts dataProducts = {this.state.products} />
             </div>
         )
