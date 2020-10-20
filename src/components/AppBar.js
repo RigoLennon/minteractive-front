@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -31,18 +31,29 @@ ElevationScroll.propTypes = {
   window: PropTypes.func,
 };
 
-export default function ElevateAppBar(props) {
+/*export default*/ function ElevateAppBar(props) {
+
   return (
     <React.Fragment>
       <CssBaseline />
       <ElevationScroll {...props}>
         <AppBar>
           <Toolbar>
-            <Typography variant="h6">*Nombre Restaurante/Logo*</Typography>
+            <Typography variant="h6">*Nombre Restaurante/Logo* </Typography>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
       <Toolbar />
     </React.Fragment>
   );
+}
+
+export default class mainAppBar extends Component{
+  render(){
+    return(
+      <div>
+        {this.ElevateAppBar()}
+      </div>
+    )
+  }
 }

@@ -2,20 +2,23 @@ import React, {Component} from 'react';
 
 //import Child from './testing/Child'; //Testing
 import ListProducts from './ListProducts';
-import MainAppBar from './AppBar';
+import ElevateAppBar from './AppBar';
 
 export default class MainPage extends Component{
     constructor(props){
         super(props);
         this.state = {
             error: null,
-            products: []
+            products: [],
+            restaurant: {},
         };
         this.getProd = this.getProd.bind(this);
+        this.getRestau = this.getRestau.bind(this);
     }
 
     componentDidMount() {
         this.getProd()
+        this.getRestau()
     }
 
     getProd(){
@@ -26,14 +29,23 @@ export default class MainPage extends Component{
         });
     }
 
+    getRestau(){
+        fetch('http://mas.diagonal-software.com/api/restaurants/')
+        .then(res => res.json())
+        .then((data) => {
+            this.setState({restaurant:data});
+        });
+    }
+
     render(){
         //var data = this.state.products;
         //console.log(this.state.products)
+        console.log(this.state.restaurant)
 
         return(
             <div>
                 {/*<Child dataProducts = {this.state.products} />*/}
-                <MainAppBar />
+                <mainAppBar dataRestau = {this.state.restaurant} />
                 <ListProducts dataProducts = {this.state.products} />
             </div>
         )
