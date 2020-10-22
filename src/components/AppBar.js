@@ -1,18 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-export default class mainAppBar extends Component{
-  render(){
-    return this.props.dataRestau.map((rest, id)=>{
-      return(
-        <AppBar key={id}>
-          <Toolbar>
-            <Typography variant="h6">{rest.name}</Typography>
-          </Toolbar>
-        </AppBar>
-      )
-    })
-  }
+export default function MainAppBar(props){
+  return props.dataRestr.map((restr)=>{
+    return (
+      <div key={restr.id}>
+        <AppBar>
+            <Toolbar>
+              <Typography variant="h6">{restr.name}</Typography>
+            </Toolbar>
+          </AppBar>
+        <Toolbar />
+      </div>
+    );
+  })
 }

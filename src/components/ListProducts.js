@@ -1,25 +1,61 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import { Card, CardActionArea, CardMedia, CardContent, Typography, CardActions, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-import Slide from '@material-ui/core/Slide';
-import Dialog from '@material-ui/core/Dialog';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 //import DetailProduct from './DetailProduct';
 //import DetailProductTest from './DetailProductTest';
 
+const useStyles = makeStyles({
+    root: {
+        maxWidth: 425,
+        marginBottom: 5,
+    },
+});
 
-export default class ListProducts extends Component{
+export default function ListProducts(props){
+    const classes = useStyles();
 
+    return props.dataProducts.map((product, id)=>{
+  return (
+    <Card className={classes.root} key={id}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          alt="Contemplative Reptile"
+          height="140"
+          image="https://picsum.photos/540"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            {product.name}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {product.short_descrip}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          Share
+        </Button>
+        <Button size="small" color="primary">
+          Learn More
+        </Button>
+      </CardActions>
+    </Card>
+  );
+    })
+}
+
+/*export default class ListProducts extends Component{
     render() {
         return this.props.dataProducts.map((product, id)=>{
             return (
@@ -50,4 +86,4 @@ export default class ListProducts extends Component{
             );
         })
     }
-}
+}*/

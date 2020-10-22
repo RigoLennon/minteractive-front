@@ -4,17 +4,24 @@ import React, {Component, useState, useEffect} from 'react';
 //import ListProducts from './ListProducts';
 //import ElevateAppBar from './AppBar';
 
-export default function TestingFunc(props){
+export default function TestingFunc(){
 
     const [products, setProducts] = useState([]);
 
     useEffect(()=>{
         fetch('http://mas.diagonal-software.com/api/products/')
         .then(res => res.json())
-        .then((data) => {
-            setProducts({products:data});
+        .then(product => {
+            //console.log(product);
+            setProducts(product);
         });
-    });
+    }, []);
+
+    return(
+        <ul>
+            {products.map(product => <li key={product.id}>{product.name}</li>)}
+        </ul>
+    )
 
     /*return products.map((product, id) => {
         <div>
@@ -24,13 +31,13 @@ export default function TestingFunc(props){
         </div>
     })*/
 
-    return(
+    /*return(
         <div >
             {products.map((product) => (
                 <div>{product.name}</div>
             ))}
         </div>
-    );
+    );*/
 }
 
 /*export default class MainPage extends Component{

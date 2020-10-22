@@ -1,11 +1,46 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from 'react';
 
 //import Child from './testing/Child'; //Testing
 import ListProducts from './ListProducts';
-import ElevateAppBar from './AppBar';
-import TestingFunc from './MainPageFunc';
+import MainAppBar from './AppBar';
+import TestingFunc from './MainPageFunc';//Testing
+import { Container } from '@material-ui/core';
 
-export default class MainPage extends Component{
+export default function MainPage(){
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(()=>{
+        fetch('http://mas.diagonal-software.com/api/products/')
+        .then(res => res.json())
+        .then(product => {
+            //console.log(product);
+            setProducts(product);
+        });
+    }, []);
+
+    const [restaurant, setRestaurant] = useState([]);
+
+    useEffect(() =>{
+        fetch('http://mas.diagonal-software.com/api/restaurants/')
+        .then(res => res.json())
+        .then(restr => {
+            console.log(restr)
+            setRestaurant(restr);
+        });
+    }, []);
+
+    return(
+        <div>
+            <MainAppBar dataRestr={restaurant}/>
+            <Container maxWidth='xl'>
+                <ListProducts dataProducts={products}/>
+            </Container>
+        </div>
+    )
+}
+
+/*export default class MainPage extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -45,10 +80,10 @@ export default class MainPage extends Component{
 
         return(
             <div>
-                {/*<Child dataProducts = {this.state.products} />*/}
+                <Child dataProducts = {this.state.products} />
                 <TestingFunc />
                 <ElevateAppBar dataRestau = {this.state.restaurant} />
-                {/*<ListProducts dataProducts = {this.state.products} />*/}
+                <ListProducts dataProducts = {this.state.products} />
             </div>
         )
 
@@ -70,6 +105,6 @@ export default class MainPage extends Component{
                     </ul>}
                 </div>
             )
-        });*/
+        });
     }
-}
+}*/
