@@ -15,6 +15,7 @@ import Divider from '@material-ui/core/Divider';
 
 
 //import DetailProduct from './DetailProduct';
+//import DetailProductTest from './DetailProductTest';
 
 
 export default class ListProducts extends Component{
@@ -41,7 +42,7 @@ export default class ListProducts extends Component{
                         </CardContent>
                     </CardActionArea>
                     <CardActions>
-                        <Button variant="contained" color="primary" size="small" onClick={this.FullScreenDialog}>
+                        <Button variant="contained" color="primary" size="small" onClick="">
                             Ver mas...
                         </Button>
                     </CardActions>

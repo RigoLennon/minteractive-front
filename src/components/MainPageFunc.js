@@ -1,11 +1,39 @@
-import React, {Component} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 
 //import Child from './testing/Child'; //Testing
-import ListProducts from './ListProducts';
-import ElevateAppBar from './AppBar';
-import TestingFunc from './MainPageFunc';
+//import ListProducts from './ListProducts';
+//import ElevateAppBar from './AppBar';
 
-export default class MainPage extends Component{
+export default function TestingFunc(props){
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(()=>{
+        fetch('http://mas.diagonal-software.com/api/products/')
+        .then(res => res.json())
+        .then((data) => {
+            setProducts({products:data});
+        });
+    });
+
+    /*return products.map((product, id) => {
+        <div>
+            <ul key={id}>
+                <li>{product.name}</li>
+            </ul>
+        </div>
+    })*/
+
+    return(
+        <div >
+            {products.map((product) => (
+                <div>{product.name}</div>
+            ))}
+        </div>
+    );
+}
+
+/*export default class MainPage extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -41,14 +69,13 @@ export default class MainPage extends Component{
     render(){
         //var data = this.state.products;
         //console.log(this.state.products)
-        //console.log(this.state.restaurant)
+        console.log(this.state.restaurant)
 
         return(
             <div>
-                {/*<Child dataProducts = {this.state.products} />*/}
-                <TestingFunc />
+                {/*<Child dataProducts = {this.state.products} />
                 <ElevateAppBar dataRestau = {this.state.restaurant} />
-                {/*<ListProducts dataProducts = {this.state.products} />*/}
+                <ListProducts dataProducts = {this.state.products} />
             </div>
         )
 
@@ -70,6 +97,6 @@ export default class MainPage extends Component{
                     </ul>}
                 </div>
             )
-        });*/
+        });
     }
-}
+}*/
