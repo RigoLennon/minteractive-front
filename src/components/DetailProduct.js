@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -35,45 +35,31 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function DetailProduct(props) {
 
   const [productDetail, setProductDetail] = useState([]);
-
-    /*useEffect(()=>{
-        fetch('http://mas.diagonal-software.com/api/products/51')
-        .then(res => res.json())
-        .then(product => {
-            //console.log(product);
-            setProductDetail(product);
-        })
-      },[]
-    );*/
-
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const id = props.productId;
 
-  /*const handleClickOpen = () =>{
-    setOpen(true);
-
-    fetch('http://mas.diagonal-software.com/api/products/51')
-        .then(res => res.json())
-        .then(product => {
-            //console.log(product);
-            setProductDetail(product);
-        })
-      }*/
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+      const handleClickOpen = () => {
+        setOpen(true);
+    
+        fetch('http://mas.diagonal-software.com/api/products/' + id)
+            .then(res => res.json())
+            .then(product => {
+                setProductDetail(product);
+            })
+      }
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  return productDetail.map((product, id)=>{
   return (
-    <div key={id}>
+    <div>
       <Button variant="contained" color="primary" size="small" onClick={handleClickOpen} >
         Ver mas
       </Button>
+      {productDetail.map(productD =>(
+    <div key={productD.id}>
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} scroll={'body'}>
         <AppBar className={classes.appBar}>
           <Toolbar>
@@ -81,16 +67,16 @@ export default function DetailProduct(props) {
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              Ver mas de {product.name}
+              Ver mas de {productD.name}
             </Typography>
           </Toolbar>
         </AppBar>
         <ImgCarousel />
-        <h2>{product.name}</h2>
-        <p>{product.description}</p>
+        <h2>{productD.name}</h2>
+        <p>{productD.description}</p>
         <Divider />
         <h2>Precio</h2>
-        <h2>${product.price}</h2>
+        <h2>${productD.price}</h2>
         <Divider />
         <h2>Ingredientes</h2>
         <List>
@@ -209,6 +195,7 @@ export default function DetailProduct(props) {
             </List>
       </Dialog>
     </div>
+    ))}
+    </div>
   );
-  })
 }
