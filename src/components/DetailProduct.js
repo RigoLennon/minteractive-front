@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -13,6 +13,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import FolderIcon from '@material-ui/icons/Folder';
 
 import ImgCarousel from './Carousel';
 
@@ -30,9 +32,33 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function DetailProduct() {
+export default function DetailProduct(props) {
+
+  const [productDetail, setProductDetail] = useState([]);
+
+    /*useEffect(()=>{
+        fetch('http://mas.diagonal-software.com/api/products/51')
+        .then(res => res.json())
+        .then(product => {
+            //console.log(product);
+            setProductDetail(product);
+        })
+      },[]
+    );*/
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+
+  /*const handleClickOpen = () =>{
+    setOpen(true);
+
+    fetch('http://mas.diagonal-software.com/api/products/51')
+        .then(res => res.json())
+        .then(product => {
+            //console.log(product);
+            setProductDetail(product);
+        })
+      }*/
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -42,30 +68,147 @@ export default function DetailProduct() {
     setOpen(false);
   };
 
+  return productDetail.map((product, id)=>{
   return (
-    <div>
-      <Button variant="contained" color="primary" size="small" onClick={handleClickOpen}>
+    <div key={id}>
+      <Button variant="contained" color="primary" size="small" onClick={handleClickOpen} >
         Ver mas
       </Button>
-      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} scroll={'body'}>
         <AppBar className={classes.appBar}>
           <Toolbar>
             <IconButton autoFocus edge="start" color="inherit" onClick={handleClose} aria-label="close">
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              *Nombre platillo*
+              Ver mas de {product.name}
             </Typography>
           </Toolbar>
         </AppBar>
         <ImgCarousel />
-        <h2>Descripcion</h2>
-        <p>*Descripcion*</p>
+        <h2>{product.name}</h2>
+        <p>{product.description}</p>
         <Divider />
         <h2>Precio</h2>
-        <h2>$250</h2>
+        <h2>${product.price}</h2>
         <Divider />
+        <h2>Ingredientes</h2>
+        <List>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Pescado'
+                  />
+                </ListItem>
+            </List>
       </Dialog>
     </div>
-  );  
+  );
+  })
 }

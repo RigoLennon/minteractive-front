@@ -6,17 +6,10 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogActions from "@material-ui/core/DialogActions";
-
-
 
 import DetailProduct from './DetailProduct';
+import AlertDialog from './testing/DialogTest';
 //import DetailProductTest from './DetailProductTest';
 
 const useStyles = makeStyles({
@@ -52,7 +45,8 @@ export default function ListProducts(props){
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <DetailProduct />
+            <DetailProduct productId={id}/>
+            <AlertDialog />
           </CardActions>
         </Card>
       );

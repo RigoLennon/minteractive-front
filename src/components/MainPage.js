@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-//import Child from './testing/Child'; //Testing
 import ListProducts from './ListProducts';
 import MainAppBar from './AppBar';
-//import TestingFunc from './MainPageFunc';//Testing
 
 import { Container } from '@material-ui/core';
 

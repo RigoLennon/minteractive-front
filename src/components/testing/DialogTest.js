@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -8,14 +8,28 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default function AlertDialog() {
   const [open, setOpen] = React.useState(false);
+  const [productDetail, setProductDetail] = useState([]);
 
   const handleClickOpen = () => {
     setOpen(true);
-  };
+
+    fetch('http://mas.diagonal-software.com/api/products/51')
+        .then(res => res.json())
+        .then(product => {
+            //console.log(product);
+            setProductDetail(product);
+        })
+  }
 
   const handleClose = () => {
     setOpen(false);
   };
+
+  /*const test = () =>{
+    return productDetail.map((product, id)=>{
+      <p key={id}>{product.name}</p>
+    })
+  }*/
 
   return (
     <div>
