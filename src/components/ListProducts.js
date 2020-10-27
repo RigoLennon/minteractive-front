@@ -9,7 +9,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
 import DetailProduct from './DetailProduct';
-import AlertDialog from './testing/DialogTest';
+//import AlertDialog from './testing/DialogTest';
 //import DetailProductTest from './DetailProductTest';
 
 const useStyles = makeStyles({
@@ -24,9 +24,9 @@ export default function ListProducts(props){
 
     const classes = useStyles();
 
-    return props.dataProducts.map((product, id)=>{
+    return props.dataProducts.map((product)=>{
       return (
-        <Card className={classes.root} key={id}>
+        <Card className={classes.root} key={product.id}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -45,8 +45,7 @@ export default function ListProducts(props){
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <DetailProduct productId={id}/>
-            <AlertDialog />
+            <DetailProduct productId={product.id}/>
           </CardActions>
         </Card>
       );
