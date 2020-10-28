@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import ListProducts from './ListProducts';
+//import ListProducts from './ListProducts';
 import MainAppBar from './AppBar';
+import MainCategories from './Categories';
 
 import { Container } from '@material-ui/core';
 
@@ -33,7 +34,8 @@ export default function MainPage(){
         <div>
             <MainAppBar dataRestr={restaurant}/>
             <Container maxWidth='xl'>
-                <ListProducts dataProducts={products}/>
+                <MainCategories />
+                {/*<ListProducts dataProducts={products}/>*/}
             </Container>
         </div>
     )
