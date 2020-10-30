@@ -3,7 +3,11 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-//import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import ListProducts from './ListProducts';
+import Alimentos from './testing/AlimentosTst';
+import Bebidas from './testing/BebidasTst';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,23 +26,27 @@ export default function MainCategories() {
     function FormRow() {
         return (
           <React.Fragment>
-            <Grid item xs={6}>
-              <Paper className={classes.paper}>🍲 Alimentos</Paper>
-            </Grid>
-            <Grid item xs={6}>
-              <Paper className={classes.paper}>🥤 Bebidas</Paper>
-            </Grid>
-            <Grid item xs={6}>
-              <Paper className={classes.paper}>🍺 Cerveza Sake Soju</Paper>
-            </Grid>
+              <Grid item xs={6}>
+                <Link to="/alimentos">
+                  <Paper className={classes.paper}><span>🍲</span> Alimentos</Paper>
+                </Link>
+              </Grid>
+              <Grid item xs={6}>
+                <Link to="/bebidas">
+                  <Paper className={classes.paper}><span>🥤</span> Bebidas</Paper>
+                </Link>
+              </Grid>
+              <Grid item xs={6}>
+                <Paper className={classes.paper}><span>🍺</span> Cerveza Sake Soju</Paper>
+              </Grid>
           </React.Fragment>
         );
       }
     
       return (
         <div className={classes.root}>
-          <Grid container spacing={1}>
-            <Grid container item xs={12} spacing={3}>
+          <Grid container spacing={2}>
+            <Grid container item xs={12} spacing={1}>
               <FormRow />
             </Grid>
           </Grid>
