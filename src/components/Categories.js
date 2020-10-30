@@ -5,10 +5,6 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import ListProducts from './ListProducts';
-import Alimentos from './testing/AlimentosTst';
-import Bebidas from './testing/BebidasTst';
-
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -27,7 +23,7 @@ export default function MainCategories() {
         return (
           <React.Fragment>
               <Grid item xs={6}>
-                <Link to="/alimentos">
+                <Link to="/products">
                   <Paper className={classes.paper}><span>🍲</span> Alimentos</Paper>
                 </Link>
               </Grid>
