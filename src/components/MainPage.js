@@ -14,17 +14,6 @@ import CategoriesRoutes from './CategoriesRoutes';
 
 export default function MainPage(){
 
-    const [products, setProducts] = useState([]);
-
-    useEffect(()=>{
-        fetch('http://mas.diagonal-software.com/api/products/')
-        .then(res => res.json())
-        .then(product => {
-            //console.log(product);
-            setProducts(product);
-        });
-    }, []);
-
     const [restaurant, setRestaurant] = useState([]);
 
     useEffect(() =>{

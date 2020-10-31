@@ -3,7 +3,8 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Link from '@material-ui/core/Link';
+import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,12 +24,12 @@ export default function MainCategories() {
         return (
           <React.Fragment>
               <Grid item xs={6}>
-                <Link to="/products">
+                <Link component={RouterLink} to="/products" underline="none">
                   <Paper className={classes.paper}><span>🍲</span> Alimentos</Paper>
                 </Link>
               </Grid>
               <Grid item xs={6}>
-                <Link to="/bebidas">
+                <Link component={RouterLink} to="/bebidas">
                   <Paper className={classes.paper}><span>🥤</span> Bebidas</Paper>
                 </Link>
               </Grid>

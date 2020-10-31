@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -22,9 +22,20 @@ const useStyles = makeStyles({
 
 export default function ListProducts(props){
 
+  const [products, setProducts] = useState([]);
+
+    useEffect(()=>{
+        fetch('http://mas.diagonal-software.com/api/products/' + props.dataCat)
+        .then(res => res.json())
+        .then(product => {
+            //console.log(product);
+            setProducts(product);
+        });
+    }, []);
+
     const classes = useStyles();
 
-    return props.dataProducts.map((product)=>{
+    return products.map((product)=>{
       return (
         <Card className={classes.root} key={product.id}>
           <CardActionArea>

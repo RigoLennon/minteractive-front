@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -9,17 +9,15 @@ import ListProducts from './ListProducts';
 import Alimentos from './testing/AlimentosTst';
 import Bebidas from './testing/BebidasTst';
 
-export default function CategoriesRoutes() {    
-      return (
+export default function CategoriesRoutes() {   
+    return (
         <main>
             <Router>
                 <Switch>
                     <Route exact path="/" component={MainCategories} />
-                    <Route path="/products" component={ListProducts} />
-                    <Route path="/alimentos" component={Alimentos} />
-                    <Route path="/bebidas" component={Bebidas} />
+                    <Route path="/products" children={<ListProducts dataCat="9" />} />
                 </Switch>
             </Router>
         </main>
-      );
+    );
 }
