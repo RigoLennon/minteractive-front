@@ -1,22 +1,10 @@
 import React, { useState, useEffect } from 'react';
-
-import ListProducts from './ListProducts';
-import MainAppBar from './AppBar';
-
 import { Container } from '@material-ui/core';
 
+import MainAppBar from './AppBar';
+import CategoriesRoutes from './CategoriesRoutes';
+
 export default function MainPage(){
-
-    const [products, setProducts] = useState([]);
-
-    useEffect(()=>{
-        fetch('http://mas.diagonal-software.com/api/products/')
-        .then(res => res.json())
-        .then(product => {
-            //console.log(product);
-            setProducts(product);
-        });
-    }, []);
 
     const [restaurant, setRestaurant] = useState([]);
 
@@ -33,7 +21,7 @@ export default function MainPage(){
         <div>
             <MainAppBar dataRestr={restaurant}/>
             <Container maxWidth='xl'>
-                <ListProducts dataProducts={products}/>
+                <CategoriesRoutes />
             </Container>
         </div>
     )

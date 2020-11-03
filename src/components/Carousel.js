@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Carousel from 'react-material-ui-carousel'
-import {Paper, Button, CardMedia} from '@material-ui/core'
+import {Paper, CardMedia} from '@material-ui/core'
 
 export default function ImgCarousel(props)
 {

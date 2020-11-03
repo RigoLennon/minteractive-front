@@ -42,7 +42,7 @@ export default function DetailProduct(props) {
       const handleClickOpen = () => {
         setOpen(true);
     
-        fetch('http://mas.diagonal-software.com/api/products/' + id)
+        fetch('http://mas.diagonal-software.com/api/product-detail/' + id)
             .then(res => res.json())
             .then(product => {
                 setProductDetail(product);
