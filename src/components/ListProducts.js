@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { useParams } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -9,8 +11,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
 import DetailProduct from './DetailProduct';
-//import AlertDialog from './testing/DialogTest';
-//import DetailProductTest from './DetailProductTest';
 
 const useStyles = makeStyles({
     root: {
@@ -20,15 +20,15 @@ const useStyles = makeStyles({
     },
 });
 
-export default function ListProducts(props){
+export default function ListProducts(){
 
+  let {id} = useParams();
   const [products, setProducts] = useState([]);
 
     useEffect(()=>{
-        fetch('http://mas.diagonal-software.com/api/products/' + props.dataCat)
+        fetch('http://mas.diagonal-software.com/api/products/' + id)
         .then(res => res.json())
         .then(product => {
-            //console.log(product);
             setProducts(product);
         });
     }, []);
