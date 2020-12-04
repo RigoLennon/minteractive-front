@@ -7,10 +7,10 @@ export default function ImgCarousel(props)
 {
     var items = [
         {
-            image: "https://picsum.photos/540"
+            image: "http://mas.diagonal-software.com/public/img/products/" + props.ProdImgNme
         },
         {
-            image: "https://picsum.photos/541"
+            image: "http://mas.diagonal-software.com/public/img/products/" + props.ProdImgNme
         },
         {
             image: "https://picsum.photos/542"
@@ -33,10 +33,10 @@ function Item(props)
             <Paper>
                 <CardMedia
                 component="img"
-                alt="Contemplative Reptile"
+                alt={props.ProdImgNme}
                 height="240"
                 image={props.item.image}
-                title="Contemplative Reptile"
+                title={props.ProdImgNme}
                 />
             </Paper>
         </div>

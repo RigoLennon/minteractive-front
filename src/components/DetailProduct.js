@@ -71,7 +71,7 @@ export default function DetailProduct(props) {
             </Typography>
           </Toolbar>
         </AppBar>
-        <ImgCarousel ProdId={productD.img_1}/>
+        <ImgCarousel ProdImgNme={productD.image_1}/>
         <h2>{productD.name}</h2>
         <p>{productD.description}</p>
         <Divider />
