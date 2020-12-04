@@ -36,6 +36,7 @@ export default function ListProducts(){
     const classes = useStyles();
 
     return products.map((product)=>{
+      let img_url = ("http://mas.diagonal-software.com/public/img/products/" + product.image_1)
       return (
         <Card className={classes.root} key={product.id}>
           <CardActionArea>
@@ -43,7 +44,7 @@ export default function ListProducts(){
               component="img"
               alt="Contemplative Reptile"
               height="140"
-              image="https://picsum.photos/540"
+              image={img_url}
               title="Contemplative Reptile"
             />
             <CardContent>
