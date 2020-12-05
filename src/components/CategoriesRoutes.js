@@ -11,7 +11,7 @@ export default function CategoriesRoutes(props) {
         <main>
             <Router>
                 <Switch>
-                    <Route exact path="/" component={MainCategories} />
+                    <Route exact path="/:id" component={MainCategories} />
                     <Route path="/products/:id" children={<ListProducts />} />
                 </Switch>
             </Router>

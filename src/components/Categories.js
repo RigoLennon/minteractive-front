@@ -22,7 +22,7 @@ export default function MainCategories() {
     const [category, setCategories] = useState([]);
 
     useEffect(()=>{
-        fetch('http://mas.diagonal-software.com/api/categories/2')
+        fetch('http://mas.diagonal-software.com/api/categories/' + id)
         .then(res => res.json())
         .then(categories => {
             setCategories(categories);
