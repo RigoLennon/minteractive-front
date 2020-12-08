@@ -8,11 +8,14 @@ export default function MainPage(){
 
     const [restaurant, setRestaurant] = useState([]);
 
+    let url = window.location.pathname;
+    let id = url.substring(url.lastIndexOf('/') + 1);
+
     useEffect(() =>{
-        fetch('http://mas.diagonal-software.com/api/restaurants/')
+        fetch('http://mas.diagonal-software.com/api/restaurant/' + id)
         .then(res => res.json())
         .then(restr => {
-            //console.log(restr)
+            console.log(restr)
             setRestaurant(restr);
         });
     }, []);
@@ -21,7 +24,7 @@ export default function MainPage(){
         <div>
             <MainAppBar dataRestr={restaurant}/>
             <Container maxWidth='xl'>
-                <CategoriesRoutes />
+                <CategoriesRoutes dataRestr={restaurant} />
             </Container>
         </div>
     )
